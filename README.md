@@ -1,7 +1,18 @@
 # gofundme WebScraper
 
 To install dependencies:
-pip install -r requirements.txt
+
+`pip install -r requirements.txt`
+
+After instlaling the dependencies you'll need to download the executable for the Selenium Browser.
+
+In this code we are using Geckodriver (Mozilla firefox). This can be downloaded from [here](https://github.com/mozilla/geckodriver/releases). Once you have downloaded the file that matches your operating system, unzip it:
+- Linux, `tar -xf file.tar.gz`
+- Mac OS, unzip by double clicking
+- Windows, winrar or similar. 
+
+After you have extratced the contents, move the executable file called `geckodriver` into the repository.
+
 ____
 
 To run the code:
