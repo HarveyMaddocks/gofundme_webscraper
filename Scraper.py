@@ -57,8 +57,14 @@ def format_url(search_terms):
     :param search_terms: str of all terms from args
     :return: str
     """
+    print(search_terms)
     base_url = 'https://www.gofundme.com/s?q='
-    base_url += search_terms.replace(' ', '+')
+
+    if isinstance(search_terms, str):
+        base_url += search_terms.replace(' ', '+')
+    else:
+        base_url += '+'.join(search_terms)
+
     return base_url
 
 
@@ -226,7 +232,12 @@ def main():
     today = date.today()
 
     # File name for saving the dataframe, includes the search terms (seperated by a _) and the date on which it was run
-    f_name = 'GoFundMeData_' + args.query_terms + '_' + today.strftime('%Y%m%d')
+    if isinstance(args.query_terms, str):
+        f_name = 'GoFundMeData_' + args.query_terms.replace(' ',  '_') + '_' + today.strftime('%Y%m%d')
+    else:
+        query_string = '_'.join(args.query_terms)
+        f_name = 'GoFundMeData_' + query_string + '_' + today.strftime('%Y%m%d')
+
     if args.page_limit:
         f_name += '_'+str(args.page_limit)
 
